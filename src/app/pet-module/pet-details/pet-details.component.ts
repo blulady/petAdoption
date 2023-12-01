@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+
 import { PetfinderApiService } from '../petfinder-api.service';
 
 @Component({
@@ -13,7 +14,7 @@ export class PetDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private petfinderApiService: PetfinderApiService
+    private petfinderApiService: PetfinderApiService,
   ) {}
 
   ngOnInit(): void {
