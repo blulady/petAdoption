@@ -20,8 +20,8 @@ export class PetDetailsComponent implements OnInit {
     this.route.params.subscribe((params: Params) => {
       const petIdFromParams = params['id'];
       this.petDetails = this.petfinderApiService.getPetById(petIdFromParams);
-    })
-  }
+      });
+    }
 
   onClose() {
     this.router.navigate(['/']);
