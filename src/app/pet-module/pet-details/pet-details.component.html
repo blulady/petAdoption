@@ -1,1 +1,16 @@
-<p>pet-details works!</p>
+<div>
+    <!-- check the object that comes back: need to be petDetails.animal.name? -->
+    <div>
+        <p>{{ petDetails.name }}</p>
+        <img src=`${petDetails.photos.small}` alt=`${petDetails.description}`>
+        <p>{{ petDetails.species }}</p>
+        <p>{{ petDetails.breeds.primary }}</p>
+        <p>{{ petDetails.colors.primary }}</p>
+        <p>{{ petDetails.age }}</p>
+        <p>{{ petDetails.gender }}</p>
+        <p>{{ petDetails.size }}</p>
+        <p>{{ petDetails.coat }}</p>
+        <p>{{ petDetails.description }}</p>
+        <p>{{ petDetails.status }}</p>
+    </div>
+</div>
