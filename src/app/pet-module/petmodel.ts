@@ -16,3 +16,14 @@ export class petModel {
     this.photo = photo;
   }
 }
+
+// export class petModel {
+//   constructor(
+//     public name: string,
+//     public species: string,
+//     public description: string,
+//     public postcode: number,
+//     public id: number,
+//     public photo: string
+//   ) {}
+// }

@@ -24,4 +24,5 @@ fetchPets(){
     this.petService.setPetList(petList);
   })
 }
+
 }

@@ -22,7 +22,7 @@ export class PetService {
 
   getPets() {
 
-    return this.petData
+    return this.petData.slice();
   }
   //function to create a new pet
   addPet(pet: petModel) {
@@ -46,5 +46,11 @@ export class PetService {
   }
   //function to edit a pet?
 
+
+  getPetById(id: number) {
+    const foundPet = this.petData.find((pet) => pet.id === id);
+
+    return foundPet;
+  }
 
 }
