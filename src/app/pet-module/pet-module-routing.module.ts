@@ -4,16 +4,18 @@ import { PetListingComponent } from './pet-listing/pet-listing.component';
 import { PetDetailsComponent } from './pet-details/pet-details.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: PetListingComponent,
-    children: [
-      {
-        path: ':id',
-        component: PetDetailsComponent
-      }
-    ]
-  }
+  // {
+  //   path: '',
+  //   component: PetListingComponent,
+  //   children: [
+  //     {
+  //       path: ':id',
+  //       component: PetDetailsComponent
+  //     }
+  //   ]
+  // }
+  {path: '', component: PetListingComponent},
+  {path: ':id', component: PetDetailsComponent}
 ];
 
 @NgModule({

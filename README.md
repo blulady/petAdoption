@@ -61,3 +61,9 @@ German
   - account settings feature
 * come up with mvp
   - then add fancy things like google maps, address
+
+hard code pets
+put a few things in firebase
+
+make an http interceptor
+  to run the oauth request to get a token
