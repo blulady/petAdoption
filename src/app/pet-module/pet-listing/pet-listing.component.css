@@ -1,0 +1,39 @@
+/* Define Petfinder colors */
+:root {
+  --pf-primary: #f26621;
+  --pf-secondary: #00aa68;
+  --pf-accent: #ffcc00;
+  --pf-text: #333333;
+  --pf-background: #ffffff;
+}
+
+/* Apply Petfinder colors to the pet-grid */
+.pet-grid {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 20px;
+  background-color: var(--pf-background); /* Background color */
+  padding: 20px; /* Adjust padding as needed */
+}
+
+/* Apply Petfinder colors to the pet-card */
+.pet-card {
+  flex: 0 0 auto;
+  width: 300px;
+  border: 1px solid var(--pf-primary); /* Border color */
+  padding: 10px;
+  text-align: center;
+  background-color: var(--pf-background); /* Card background color */
+  color: var(--pf-text); /* Text color */
+}
+
+.pet-card img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Example: Apply Petfinder primary color to h3 elements inside pet-cards */
+.pet-card h3 {
+  color: var(--pf-primary);
+}

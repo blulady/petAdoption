@@ -1,1 +1,28 @@
-<p>pet-listing works</p>
+
+<div class="pet-grid">
+  <div class="pet-card" *ngFor="let pet of petData">
+    <h1>{{ pet.name }}</h1>
+    <img [src]="pet.photo" alt="{{ pet.name }} Image" style="max-height: 150px; max-width: 150px;"  />
+    <h3>{{pet.species}}</h3>
+    <p>{{ pet.description }}</p>
+    <!-- Add other details you want to display -->
+  </div>
+</div>
+<div class="pet-grid">
+  <div class="pet-card" *ngFor="let pet of petData">
+    <h1>{{ pet.name }}</h1>
+    <img [src]="pet.photo" alt="{{ pet.name }} Image" style="max-height: 150px; max-width: 150px;" />
+    <h3>{{pet.species}}</h3>
+    <p>{{ pet.description }}</p>
+    <!-- Add other details you want to display -->
+  </div>
+</div>
+<div class="pet-grid">
+  <div class="pet-card" *ngFor="let pet of petData">
+    <h1>{{ pet.name }}</h1>
+    <img [src]="pet.photo" alt="{{ pet.name }} Image" style="max-height: 150px; max-width: 150px;" />
+    <h3>{{pet.species}}</h3>
+    <p>{{ pet.description }}</p>
+    <!-- Add other details you want to display -->
+  </div>
+</div>

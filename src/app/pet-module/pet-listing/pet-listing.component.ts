@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataStorageFirebase } from 'src/app/shared/data-storage-firebase.service';
+import { PetService } from '../pet.service';
+import { petModel } from '../petmodel';
 
 @Component({
   selector: 'app-pet-listing',
@@ -7,10 +9,20 @@ import { DataStorageFirebase } from 'src/app/shared/data-storage-firebase.servic
   styleUrls: ['./pet-listing.component.css']
 })
 export class PetListingComponent implements OnInit {
+  petData: petModel[] = [];
 
-  constructor(private data: DataStorageFirebase){}
-  ngOnInit(): void {
-  this.data.fetchPets();
-  console.log(this.data.fetchPets())
+  constructor(private data: DataStorageFirebase, private petService: PetService){}
+//   ngOnInit(): void {
+//   this.data.fetchPets();
+//   console.log(this.data.fetchPets())
+// }
+
+ngOnInit(): void{
+this.data.fetchPets();
+this.petService.petListChange.subscribe((pets: petModel[]) => {
+  this.petData = pets;
+})
+
+
 }
 }
