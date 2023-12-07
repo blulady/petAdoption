@@ -3,10 +3,10 @@ export class petModel {
   public species: string;
   public description: string;
   public postcode: number;
-  public id: number;
+  public id: string;
   public photo: string;
 
-  constructor(name: string, description: string, species: string, postcode: number, id: number, photo: string,){
+  constructor(name: string, description: string, species: string, postcode: number, id: string, photo: string,){
 
     this.name = name;
     this.species = species;

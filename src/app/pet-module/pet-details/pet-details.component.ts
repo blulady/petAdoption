@@ -12,7 +12,7 @@ import { PetService } from '../pet.service';
 })
 
 export class PetDetailsComponent {
-  petDetails: petModel;
+  petDetails?: petModel;
 
   constructor(
     private route: ActivatedRoute,
@@ -23,7 +23,7 @@ export class PetDetailsComponent {
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
-      const petIdFromParams = +params['id'];
+      const petIdFromParams = params['id'];
       console.log(petIdFromParams);
       this.petDetails = this.petService.getPetById(petIdFromParams);
       console.log(this.petDetails)

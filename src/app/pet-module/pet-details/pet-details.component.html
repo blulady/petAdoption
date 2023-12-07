@@ -2,26 +2,28 @@
     <!-- check the object that comes back: need to be petDetails.animal.name? -->
     <div>
         <div>
-            <p>pet details</p>
-            <!-- <p>{{ petDetails.name }}</p> -->
+            <!-- <p>pet details</p> -->
+            <p>{{ petDetails?.name }}</p>
+            <img src={{petDetails?.photo}} alt="" height="300px">
             <!-- <img src=`${petDetails.photos.small}` alt=`${petDetails.description}`> -->
         </div>
-        <!-- <div>
-            <p>{{ petDetails.species }}</p>
-            <p>{{ petDetails.breeds.primary }}</p>
+        <div>
+            <p>{{ petDetails?.species }}</p>
+            <!-- <p>{{ petDetails.breeds.primary }}</p>
             <p>{{ petDetails.colors.primary }}</p>
             <p>{{ petDetails.age }}</p>
             <p>{{ petDetails.gender }}</p>
             <p>{{ petDetails.size }}</p>
-            <p>{{ petDetails.coat }}</p>
+            <p>{{ petDetails.coat }}</p> -->
         </div>
         <div>
-            <p>{{ petDetails.description }}</p>
+            <p>{{ petDetails?.description }}</p>
         </div>
         <div>
-            <p>{{ petDetails.status }}</p>
+            <p>{{ petDetails?.postcode }}</p>
+            <!-- <p>{{ petDetails.status }}</p>
             <p>{{ petDetails.contact.postcode }}</p>
-            <p>{{ petDetails.contact.email }}</p>
-        </div> -->
+            <p>{{ petDetails.contact.email }}</p> -->
+        </div>
     </div>
 </div>

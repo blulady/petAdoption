@@ -18,9 +18,11 @@ export class PetListingComponent implements OnInit {
 // }
 
 ngOnInit(): void{
-this.data.fetchPets();
+// this.data.fetchPets();
+this.petData = this.petService.getPets();
 this.petService.petListChange.subscribe((pets: petModel[]) => {
   this.petData = pets;
+  console.log(this.petData)
 })
 
 
