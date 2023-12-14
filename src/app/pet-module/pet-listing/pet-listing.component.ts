@@ -27,7 +27,16 @@ ngOnInit(): void{
   this.getPetList();
   this.petService.petListChange.subscribe((pets: PetModel[]) => {
     this.petData = pets;
-  })
+  }), this.fetchPetsWithPhotos();
+
+}
+fetchPetsWithPhotos(): void {
+  // Assuming there's a method in PetfinderApiService to fetch 20 pets with photos
+  this.petfinderApiService.getListOfPetsWithPhotos().subscribe((pets: PetModel[]) => {
+    // Assuming this method sets the pet list in the service
+    this.petService.setPetList(pets);
+    this.petData = pets;
+  });
 }
 
 goToDetail(id: number) {

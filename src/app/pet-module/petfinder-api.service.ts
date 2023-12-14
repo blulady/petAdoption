@@ -34,20 +34,25 @@ export class PetfinderApiService {
     ) {}
 
     getOAuthToken() {
-        return this.http.post(this.petfinderOAuthURL, this.tokenRequestBody)
-        .pipe(
-            map(responseData => {
-                let tokenArray = [];
-                for (let val of Object.values(responseData)) {
-                    tokenArray.push(val);
-                }
-                this.token = tokenArray[2];
-                console.log(this.token);
-                return this.token;
-            })
-        )
-        .subscribe();
-    }
+      const tokenRequestBody = {
+          "grant_type": "client_credentials",
+          "client_id": environment.PETFINDER_CLIENT_ID,
+          "client_secret": environment.PETFINDER_CLIENT_SECRET
+      };
+
+      return this.http.post(this.petfinderOAuthURL, tokenRequestBody)
+          .pipe(
+              map((responseData: any) => {
+                  let tokenArray = [];
+                  for (let val of Object.values(responseData)) {
+                      tokenArray.push(val);
+                  }
+                  this.token = tokenArray[2];
+                  console.log(this.token);
+                  return this.token;
+              })
+          );
+  }
 
     getListOfPets(): void {
         this.http.post(this.petfinderOAuthURL, this.tokenRequestBody)
@@ -71,7 +76,7 @@ export class PetfinderApiService {
             console.log(this.petService.petData);
         })
     }
-   
+
     getPetById(id: number) {
         this.http.post(this.petfinderOAuthURL, this.tokenRequestBody)
         .pipe(
@@ -96,4 +101,16 @@ export class PetfinderApiService {
             return foundPet;
         })
     }
+
+    getListOfPetsWithPhotos() {
+      return this.getOAuthToken().pipe(
+          mergeMap(token => {
+              const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
+              const petfinderURL = 'https://api.petfinder.com/v2/animals/?limit=20&type=dog'; // Assuming type=dog, replace it with the desired type
+              return this.http.get<any>(petfinderURL, { headers }).pipe(
+                  map((response: any) => response.animals as PetModel[])
+              );
+          })
+      );
+  }
 }

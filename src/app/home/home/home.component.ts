@@ -4,7 +4,7 @@ import { filter } from 'rxjs';
 import { PetService } from 'src/app/pet-module/pet.service';
 import { FavoritePetModel, PetModel } from 'src/app/pet-module/petmodel';
 import { DataStorageFirebase } from 'src/app/shared/data-storage-firebase.service';
-
+import { PetfinderApiService } from 'src/app/pet-module/petfinder-api.service';
 
 @Component({
   selector: 'app-home',
@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit{
   showButtons: boolean = true;
   petData: PetModel[] = [];
 
-  constructor(private data: DataStorageFirebase, private petService: PetService, private router: Router)  {
+  constructor(private petfinderApiService: PetfinderApiService, private data: DataStorageFirebase, private petService: PetService, private router: Router)  {
     this.router.events
       .pipe(
         filter((event): event is NavigationEnd => event instanceof NavigationEnd)
@@ -31,10 +31,13 @@ export class HomeComponent implements OnInit{
       });
   }
 
-  ngOnInit(): void{
-    // this.data.fetchPets();
-    this.petService.petListChange.subscribe((pets: PetModel[]) => {
-      this.animalsToShow = pets;
+  ngOnInit(): void {
+    this.fetchPetsWithPhotos();
+  }
+
+  fetchPetsWithPhotos() {
+    this.petfinderApiService.getListOfPetsWithPhotos().subscribe((pets: PetModel[]) => {
+      this.petData = pets.slice(0, 5); // Limit to 5 pets
     });
   }
 
@@ -57,12 +60,12 @@ export class HomeComponent implements OnInit{
   // Function to display cats
   // Function to filter and display cats
   showCats(): void {
-    this.animalsToShow = this.petService.getPets().filter(pet => pet.species === 'cat');
+    this.animalsToShow = this.petData.filter(pet => pet.species.toLowerCase() === 'cat');
     this.showButtons = false;
   }
-  // Function to filter and display dogs
+
   showDogs(): void {
-    this.animalsToShow = this.petService.getPets().filter(pet => pet.species === 'dog');
+    this.animalsToShow = this.petData.filter(pet => pet.species.toLowerCase() === 'dog');
     this.showButtons = false;
   }
     navigateToHome(): void {

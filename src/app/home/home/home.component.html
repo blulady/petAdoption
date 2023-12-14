@@ -1,4 +1,4 @@
-<!-- Updated HTML using IDs to apply cursor styles could not get working. -->
+<!-- Existing HTML for buttons -->
 <div class="row" *ngIf="showButtons">
   <div class="col-6">
     <div class="image-container">
@@ -14,42 +14,26 @@
   </div>
 </div>
 
-<div class="row mt-4" *ngIf="!showButtons && animalsToShow.length > 0">
+<!-- Displaying pet cards -->
+<div class="row mt-4" *ngIf="!showButtons && petData.length > 0">
   <div class="col-12">
-    <div class="pet-list" *ngFor="let animal of animalsToShow" (click)="goToDetail(animal.id)">
-      <div class="pet-info">
-        <p class="pet-name">Name: {{ animal.name }}</p>
-        <p class="pet-species">Species: {{ animal.species }}</p>
+    <div class="pet-grid">
+      <div class="pet-card" *ngFor="let pet of petData | slice:0:20" (click)="goToDetail(pet.id)">
+        <div class="card-header">
+          <i class="fas fa-heart"
+            [ngClass]="{ 'is-favorite': isFavorite(pet) }"
+            (click)="toggleFavorite(pet); $event.stopPropagation();"
+          ></i>
+        </div>
+        <div class="card-body">
+          <!-- Other pet details -->
+          <h2>{{ pet.name }}</h2>
+          <img *ngIf="pet.photos && pet.photos.length > 0" [src]="pet.photos[0].small" [alt]="pet.name + ' Image'" class="pet-image" />
+          <img *ngIf="!pet.photos || pet.photos.length === 0" src="https://www.brasscraft.com/wp-content/uploads/2017/01/no-image-available.png" class="pet-image" />
+          <h3>{{ pet.species }}</h3>
+          <button class="custom-button">Adopt Now</button>
+        </div>
       </div>
-      <img [src]="animal.photo" alt="{{ animal.name }} Image" class="pet-image" />
     </div>
   </div>
 </div>
-<!-- home.component.html -->
-<br>
-<h1 class="page-title"></h1>
-<!-- home.component.html -->
-<!-- Existing code -->
-<div class="pet-grid">
-  <div class="pet-card" *ngFor="let pet of animalsToShow | slice:0:5" (click)="goToDetail(pet.id)">
-    <div class="card-header">
-      <i class="fas fa-heart"
-         [ngClass]="{ 'is-favorite': isFavorite(pet) }"
-         (click)="toggleFavorite(pet); $event.stopPropagation();"
-      ></i>
-    </div>
-    <div class="card-body">
-      <!-- Other pet details -->
-      <h1>{{ pet.name }}</h1>
-      <img [src]="pet.photo" alt="{{ pet.name }} Image" style="max-height: 150px; max-width: 150px;" />
-      <h3>{{ pet.species }}</h3>
-      <button class="custom-button">Adopt Now</button>
-    </div>
-  </div>
-</div>
-
-
-
-
-
-
