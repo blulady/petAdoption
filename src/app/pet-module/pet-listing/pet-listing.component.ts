@@ -22,13 +22,35 @@ export class PetListingComponent {
     private petfinderApiService: PetfinderApiService,
     private router: Router) {}
 
+
+
     ngOnInit(): void {
-      // Fetch data on component initialization
-      this.petfinderApiService.getListOfPets();
-      this.petService.petListChange.subscribe((pets: PetModel[]) => {
-        this.petData = pets; // Assign fetched data to petData array
+      this.fetchPetsWithPhotos();
+    }
+
+    fetchPetsWithPhotos(): void {
+      this.petfinderApiService.getListOfPets().subscribe((pets: PetModel[]) => {
+        const petsWithPhotos = pets.filter(pet => pet.photo && pet.photo.length > 0);
+
+        if (petsWithPhotos.length >= 10) {
+          this.petData = petsWithPhotos.slice(0, 20);
+        } else {
+          this.fetchAdditionalPets(petsWithPhotos);
+        }
       });
     }
+
+    fetchAdditionalPets(currentPets: PetModel[]): void {
+      let fetchedPets = currentPets;
+      while (fetchedPets.length < 10) {
+        this.petfinderApiService.getListOfPets().subscribe((additionalPets: PetModel[]) => {
+          const additionalPetsWithPhotos = additionalPets.filter(pet => pet.photo && pet.photo.length > 0);
+          fetchedPets = [...fetchedPets, ...additionalPetsWithPhotos];
+          this.petData = fetchedPets.slice(0, 20);
+        });
+      }
+    }
+
 
 goToDetail(id: number) {
   this.router.navigate(['/pet', id]);

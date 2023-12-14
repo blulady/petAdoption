@@ -71,7 +71,10 @@ export class PetfinderApiService {
             console.log(this.petService.petData);
         })
     }
-   
+    getListOfPetsWithPhotos(): Observable<PetModel[]> {
+      // Assuming the API returns pet data including photos
+      return this.http.get<PetModel[]>(`${this.petfinderURL}/pets-with-photos`);
+    }
     getPetById(id: number) {
         this.http.post(this.petfinderOAuthURL, this.tokenRequestBody)
         .pipe(
