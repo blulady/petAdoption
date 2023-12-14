@@ -23,7 +23,7 @@ export class PetListingComponent {
     private router: Router) {}
 
 ngOnInit(): void{
-  this.data.fetchPets();
+  // this.data.fetchPets(); commented out once petfinderapi utilized
   this.getPetList();
   this.petService.petListChange.subscribe((pets: PetModel[]) => {
     this.petData = pets;
@@ -53,9 +53,6 @@ isFavorite(pet: PetModel): boolean {
   // Implement logic to check if the pet is in favorites
   return this.petService.getFavorites().some(fav => fav.id === pet.id);
 }
-  isFavorite(pet: PetModel): boolean {
-    return this.petService.getFavorites().some(fav => fav.id === pet.id);
-  }
 
   toggleFavorite(pet: PetModel): void {
     if (this.isFavorite(pet)) {

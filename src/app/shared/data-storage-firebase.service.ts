@@ -23,13 +23,13 @@ storePets() {
     const url = `${this.firebaseUrl}/pets.json`; // Adjust the endpoint URL as needed
     return this.http.post(url, newPet);
   }
-fetchPets(){
-  this.http.get<PetModel[]>(
-    'https://petadoption-9abd7-default-rtdb.firebaseio.com/pets.json'
-  ).subscribe(petList => {
-    this.petService.setPetList(petList);
-  })
-}
+// fetchPets(){ //no longer needed with api 
+//   this.http.get<PetModel[]>(
+//     'https://petadoption-9abd7-default-rtdb.firebaseio.com/pets.json'
+//   ).subscribe(petList => {
+//     this.petService.setPetList(petList);
+//   })
+// }
   fetchFavPets() {
     this.http.get<FavoritePetModel[]>(
       'https://petadoption-9abd7-default-rtdb.firebaseio.com/favorites.json'

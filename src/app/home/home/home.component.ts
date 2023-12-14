@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit{
   }
 
   ngOnInit(): void{
-    this.data.fetchPets();
+    // this.data.fetchPets();
     this.petService.petListChange.subscribe((pets: PetModel[]) => {
       this.animalsToShow = pets;
     });

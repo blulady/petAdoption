@@ -29,8 +29,9 @@
 <br>
 <h1 class="page-title"></h1>
 <!-- home.component.html -->
+<!-- Existing code -->
 <div class="pet-grid">
-  <div class="pet-card" *ngFor="let pet of animalsToShow" (click)="goToDetail(pet.id)">
+  <div class="pet-card" *ngFor="let pet of animalsToShow | slice:0:5" (click)="goToDetail(pet.id)">
     <div class="card-header">
       <i class="fas fa-heart"
          [ngClass]="{ 'is-favorite': isFavorite(pet) }"
@@ -46,6 +47,7 @@
     </div>
   </div>
 </div>
+
 
 
 

@@ -49,30 +49,27 @@
   <!-- Pet cards grid -->
   <div class="pet-grid">
     <!-- Pet card -->
-    <div class="pet-card" *ngFor="let pet of petData" (click)="goToDetail(pet.id)">
-      <div class="card-header">
-        <!-- Heart icon for favorite -->
-        <i class="fas fa-heart" [ngClass]="{ 'is-favorite': isFavorite(pet) }" (click)="toggleFavorite(pet); $event.stopPropagation();"></i>
-        <!-- Edit button -->
-        <button class="edit-button" (click)="editPet(pet.id)">
-          <i class="fas fa-pencil-alt"></i>
-        </button>
+    <ng-container *ngFor="let pet of petData">
+      <div class="pet-card" *ngIf="pet.photos && pet.photos.length > 0" (click)="goToDetail(pet.id)">
+        <div class="card-header">
+          <!-- Heart icon for favorite -->
+          <i class="fas fa-heart" [ngClass]="{ 'is-favorite': isFavorite(pet) }" (click)="toggleFavorite(pet); $event.stopPropagation();"></i>
+          <!-- Edit button -->
+          <button class="edit-button" (click)="editPet(pet.id)">
+            <i class="fas fa-pencil-alt"></i>
+          </button>
+        </div>
+        <!-- Pet details -->
+        <div class="card-body" title="Click for more details">
+          <h2 class="pet-name">{{ pet.name }}</h2>
+          <img *ngIf="pet.photos[0]" [src]="pet.photos[0].small" [alt]="pet.name + ' Image'" class="pet-image" />
+          <img *ngIf="!pet.photos[0]" src="https://www.brasscraft.com/wp-content/uploads/2017/01/no-image-available.png" class="pet-image" />
+          <h3 class="pet-species">{{ pet.species }}</h3>
+          <!-- Add other details here -->
+        </div>
+        <!-- Delete icon -->
+        <i class="fas fa-minus-circle remove-icon" (click)="deletePet(pet)"></i>
       </div>
-      <!-- Pet details -->
-      <div class="card-body" title="Click for more details">
-        <h2 class="pet-name">{{ pet.name }}</h2>
-        <img *ngIf="pet.photos[0]"
-          [src]="pet.photos[0].small"
-          alt="{{ pet.name }} Image"
-          class="pet-image" />
-        <img *ngIf="!pet.photos[0]"
-          src="https://www.brasscraft.com/wp-content/uploads/2017/01/no-image-available.png"
-          class="pet-image" />
-        <h3 class="pet-species">{{ pet.species }}</h3>
-        <!-- Add other details here -->
-      </div>
-      <!-- Delete icon -->
-      <i class="fas fa-minus-circle remove-icon" (click)="deletePet(pet)"></i>
-    </div>
+    </ng-container>
   </div>
 </div>
