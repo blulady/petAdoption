@@ -16,12 +16,24 @@
 
 <div class="row mt-4" *ngIf="!showButtons && animalsToShow.length > 0">
   <div class="col-12">
-    <div class="pet-list" *ngFor="let animal of animalsToShow" (click)="goToDetail(animal.id)">
-      <div class="pet-info">
-        <p class="pet-name">Name: {{ animal.name }}</p>
-        <p class="pet-species">Species: {{ animal.species }}</p>
+    <div class="pet-grid">
+      <div class="pet-card" *ngFor="let pet of animalsToShow | slice:0:5">
+        <!-- Show card only if pet has photos -->
+        <div class="card-body" *ngIf="pet.photos && pet.photos.length > 0" (click)="goToDetail(pet.id)">
+          <div class="card-header">
+            <i class="fas fa-heart"
+               [ngClass]="{ 'is-favorite': isFavorite(pet) }"
+               (click)="toggleFavorite(pet); $event.stopPropagation();"
+            ></i>
+          </div>
+          <div class="card-info">
+            <h2 class="pet-name">{{ pet.name }}</h2>
+            <img [src]="pet.photos[0].small" [alt]="pet.name + ' Image'" class="pet-image" />
+            <h3 class="pet-species">Species: {{ pet.species }}</h3>
+            <!-- Add other details here -->
+          </div>
+        </div>
       </div>
-      <img [src]="animal.photo" alt="{{ animal.name }} Image" class="pet-image" />
     </div>
   </div>
 </div>

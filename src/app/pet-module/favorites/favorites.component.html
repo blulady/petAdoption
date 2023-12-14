@@ -4,16 +4,25 @@
   <p>No favorites found.</p>
 </div>
 
+
+
 <div class="favorites-container">
   <div *ngFor="let favorite of myFavorites" class="favorite-item" (click)="goToDetail(favorite.id)">
-    <!-- Display favorite details here -->
     <div class="favorite-details">
-      <h2 class="favorite-name">{{ favorite.name }}</h2>
-      <img [src]="favorite.photo" alt="Favorite Photo" class="favorite-photo">
-      <!-- Add other favorite details -->
+      <div class="favorite-image-container">
+        <img *ngIf="favorite.photos && favorite.photos.length > 0" [src]="favorite.photos[0].small" [alt]="favorite.name + ' Image'" class="favorite-photo" />
+        <img *ngIf="!favorite.photos || favorite.photos.length === 0" src="https://www.brasscraft.com/wp-content/uploads/2017/01/no-image-available.png" class="favorite-photo" />
+      </div>
+      <div class="favorite-description">
+        <h2 class="favorite-name">{{ favorite.name }}</h2>
+        <h3 class="pet-species">{{ favorite.species }}</h3>
+        <!-- Add other favorite details -->
+      </div>
     </div>
   </div>
 </div>
+
+
 <!-- Existing content -->
 <!-- ... -->
 <div class="favorites-container">

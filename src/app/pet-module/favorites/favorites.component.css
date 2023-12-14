@@ -1,6 +1,4 @@
-/* Existing styles */
 
-/* Page title */
 .favorites-title {
   text-align: center;
   font-size: 2.5em;
@@ -8,23 +6,13 @@
   color: #333;
 }
 
-/* No favorites message */
-.no-favorites {
-  text-align: center;
-  font-size: 1.2em;
-  color: #777;
-  margin-top: 20px;
-}
-
 /* Favorite item container */
 .favorites-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around; /* Adjust spacing between items */
-  gap: 20px; /* Adjust the gap between items */
+  justify-content: space-around;
+  gap: 20px;
 }
-
-
 
 /* Individual favorite details */
 .favorite-details {
@@ -34,36 +22,35 @@
   border-radius: 10px;
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out;
-  width: 300px; /* Adjust width as needed */
-  height: 300px; /* Set a fixed height for image container */
+  width: 300px;
+  height: 400px; /* Adjusted height for more space */
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-
-
 .favorite-photo {
-  width: 100%; /* Responsive image width */
-  height: 100%; /* Fill container height */
-  object-fit: cover; /* Maintain aspect ratio and fill container */
-  border-radius: 10px;
+  width: 200px; /* Adjusted image width */
+  height: 200px; /* Adjusted image height */
+  object-fit: cover;
+  border-radius: 50%; /* Make images circular */
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease-in-out;
+  cursor: pointer; /* Show pointer cursor on hover */
 }
 
 .favorite-photo:hover {
-  transform: scale(1.05);
+  transform: scale(1.1); /* Scale the image on hover */
 }
 /* Styles for the large heart */
 .large-heart-container {
   display: flex;
   justify-content: center;
-  margin-top: 40px; /* Adjust the margin as needed */
+  margin-bottom: 20px; /* Adjusted margin */
 }
 
 .large-heart-container img {
-  width: 300px; /* Set the width of the heart image */
-  height: auto; /* Maintain aspect ratio */
+  width: 100px; /* Adjusted heart image size */
+  height: auto;
   /* Add any other styles for the heart image */
 }

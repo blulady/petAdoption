@@ -22,13 +22,13 @@ export class PetListingComponent {
     private petfinderApiService: PetfinderApiService,
     private router: Router) {}
 
-ngOnInit(): void{
-  this.data.fetchPets();
-  this.getPetList();
-  this.petService.petListChange.subscribe((pets: PetModel[]) => {
-    this.petData = pets;
-  })
-}
+    ngOnInit(): void {
+      // Fetch data on component initialization
+      this.petfinderApiService.getListOfPets();
+      this.petService.petListChange.subscribe((pets: PetModel[]) => {
+        this.petData = pets; // Assign fetched data to petData array
+      });
+    }
 
 goToDetail(id: number) {
   this.router.navigate(['/pet', id]);
