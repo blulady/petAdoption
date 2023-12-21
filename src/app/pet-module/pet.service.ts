@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FavoritePetModel, PetModel } from './petmodel';
-import { Subject } from 'rxjs';
+import { EMPTY, Subject } from 'rxjs';
 import { take, exhaustMap } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../auth/auth.service';
@@ -79,9 +79,9 @@ private updateFavoritePetsOnServer(): void {
     exhaustMap(user => {
       if (!user || !user.token) {
         // Handle the case when user or user.token is null or undefined
-        // For example, you can throw an error, redirect the user to log in, etc.
-        // Here, I'm throwing an error for demonstration purposes
-        throw new Error('User or user token is null or undefined');
+        console.error('User not logged in or token not available.');
+        // You might want to redirect the user to the login page or handle the scenario accordingly
+        return EMPTY; // Returning an empty observable to stop further execution
       }
       return this.http.put<FavoritePetModel[]>(
         'https://petadoption-9abd7-default-rtdb.firebaseio.com/favorites.json?auth=' + user.token,
@@ -97,7 +97,7 @@ private updateFavoritePetsOnServer(): void {
       // Handle the error as needed
     }
   );
-  }
+}
   // function to return favorite pets array of pets
   getFavorites(): FavoritePetModel[] {
     return this.petFavorites;
