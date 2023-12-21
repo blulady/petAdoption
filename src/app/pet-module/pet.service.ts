@@ -73,15 +73,31 @@ setOnePet(pet: PetModel) {
     this.petFavListChange.next([...this.petFavorites]);
   }
 //updates favorite pets array on firebase
-    private updateFavoritePetsOnServer(): void {
-    this.authService.user.pipe(take(1), exhaustMap( user => {
+private updateFavoritePetsOnServer(): void {
+  this.authService.user.pipe(
+    take(1),
+    exhaustMap(user => {
+      if (!user || !user.token) {
+        // Handle the case when user or user.token is null or undefined
+        // For example, you can throw an error, redirect the user to log in, etc.
+        // Here, I'm throwing an error for demonstration purposes
+        throw new Error('User or user token is null or undefined');
+      }
       return this.http.put<FavoritePetModel[]>(
-      'https://petadoption-9abd7-default-rtdb.firebaseio.com/favorites.json?auth=' + user.token, this.petFavorites)}))
-      .subscribe(response => {
+        'https://petadoption-9abd7-default-rtdb.firebaseio.com/favorites.json?auth=' + user.token,
+        this.petFavorites
+      );
+    })
+  ).subscribe(
+    response => {
       console.log('Favorite pets updated on Firebase:', response);
-    });
+    },
+    error => {
+      console.error('Error updating favorite pets:', error);
+      // Handle the error as needed
+    }
+  );
   }
-
   // function to return favorite pets array of pets
   getFavorites(): FavoritePetModel[] {
     return this.petFavorites;
