@@ -4,6 +4,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Development server
 
+Run `npm install` to install the required packages locally to run the server. 
+
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
 ## Code scaffolding
@@ -27,43 +29,35 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
 
+### A Pet Adoption Website that utilizes the [PetFinder API](https://www.petfinder.com/developers/)
 
-adopt a pet
-- search feature
-- auth feature
-- users can add animals 
-    - upload photos
-- users can mark an animal as adopted
-- users can mark favorites
+#### Currently deployed at [Pet Adoption](https://petadoption-9abd7.web.app/)
 
-what kind of features
-    write them out like user stories
+- Please feel free to login and view current pets for adoption
 
-        sally wants to login in to the app & look at adoptable animals
-        
-    once the user stories are created
-        decide whats going into a module
-        try to flesh out component structure (or build components first & then create module)
-        
-create the repo
-    ng new
-    push it up 
-German
-1. models first (what does our data look like)
-2. accounts settings module
-3. auth module
-4. public model (landing page)
-5. frequently commiting our code
+#### Views
 
-* the biggest problem in groups is headbutts?
-* in the very beginning, think of models (user model, animal model), feature's are auth... & should be handled by only one dev
-  - dash board module
-  - account settings feature
-* come up with mvp
-  - then add fancy things like google maps, address
+  The Login page will log you in.
+  ![Login Page](Login.png)
 
-hard code pets
-put a few things in firebase
+  The Create Account page will create a new account so that a user can login and access the pets favorits page. It will validate that your passwords match and 
+  are long enough.
+  ![Create Accounts Page cat and dog together](create_account.png)
 
-make an http interceptor
-  to run the oauth request to get a token
+  Home page is pulling from the Petfinder Api for pets displayed below the adoption links.
+  ![Home page choose either cat or dog links or click on pets displayed for more information](Home.png)
+
+  The favorites page where users can keep pets they have favorited, the colors change as you hover over the card.
+  ![a picture of a dog with a heart under it](fav2.png)
+
+  Pets page displays pets available that have photos from the PetFinder API
+  ![Pets Page](pets.png)
+
+  The cats page displays cats available for adoption.
+  ![Cats Page](cats.png)
+
+  The dogs page displays cats available for adoption.
+  ![Dogs Page](dogs.png)
+
+  The pet details page displays the details from the api of the pet selected.
+  ![A Cat and cat details displayed](<pet details page.png>)
