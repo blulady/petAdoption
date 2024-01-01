@@ -46,7 +46,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
   Home page is pulling from the Petfinder Api for pets displayed below the adoption links.
   ![Home page choose either cat or dog links or click on pets displayed for more information](Home.png)
 
-  The favorites page where users can keep pets they have favorited, the colors change as you hover over the card.
+  The favorites page where users can keep pets they have favorited, the color changes as you hover over the card.
   ![a picture of a dog with a heart under it](fav2.png)
 
   Pets page displays pets available that have photos from the PetFinder API
@@ -55,8 +55,8 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
   The cats page displays cats available for adoption.
   ![Cats Page](cats.png)
 
-  The dogs page displays cats available for adoption.
+  The dogs page displays dogs available for adoption.
   ![Dogs Page](dogs.png)
 
-  The pet details page displays the details from the api of the pet selected.
+  The pet details page displays the details from the Petfinder API of the pet selected.
   ![A Cat and cat details displayed](<pet details page.png>)
